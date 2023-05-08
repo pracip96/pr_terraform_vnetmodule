@@ -4,18 +4,21 @@
   location = var.location
 }*/
 
-resource "azurerm_virtual_network" "example" {
+resource "azurerm_virtual_network" "vnetterraform" {
   name                = var.vnet_name
   location            = var.location
   resource_group_name = var.resource_group_name
   address_space       = var.address_space
     }
-  resource "azurerm_subnet" "subnetterraform" {
-  name                 = var.subnet_name
+resource "azurerm_subnet" "subnetterra" {
+  name                 = var.subnetnamemod
   resource_group_name  = var.resource_group_name
-  virtual_network_name = var.vnet_name
-  address_prefixes     = ["10.0.1.0/24"]
+  virtual_network_name = azurerm_virtual_network.vnetterraform.name
+  address_prefixes     = var.subnet_address_space
+  service_endpoints    = ["Microsoft.Sql", "Microsoft.Storage"]
 }
+
+
 
 
 

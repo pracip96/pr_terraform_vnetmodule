@@ -1,7 +1,6 @@
-/*output "vnet_id" {
+output "vnet_id" {
   value = azurerm_virtual_network.vnetterraform.id
-}*/
-
-output "subnet_ids" {
-  value = azurerm_subnet.subnetterraform.id
+}
+output "subnet_id"{
+  value = azurerm_subnet.subnetterra.id
 }
